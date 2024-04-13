@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B51A95C12BCAF9D5002852D7 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51A95C02BCAF9D5002852D7 /* Color+Extension.swift */; };
 		B51A95C32BCAFE7A002852D7 /* ShapeStyle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51A95C22BCAFE7A002852D7 /* ShapeStyle+Extension.swift */; };
+		B51A95C62BCB04FC002852D7 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51A95C52BCB04FC002852D7 /* Date+Extension.swift */; };
 		B5251DB82BBB238C00B7E45B /* SimpleDailyPlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5251DB72BBB238C00B7E45B /* SimpleDailyPlanner.swift */; };
 		B5251DBC2BBB238D00B7E45B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5251DBB2BBB238D00B7E45B /* Assets.xcassets */; };
 		B5251DC82BBB23C500B7E45B /* Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5251DC72BBB23C500B7E45B /* Frame.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		B51A95C02BCAF9D5002852D7 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		B51A95C22BCAFE7A002852D7 /* ShapeStyle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShapeStyle+Extension.swift"; sourceTree = "<group>"; };
+		B51A95C52BCB04FC002852D7 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		B5251DB42BBB238C00B7E45B /* SimpleDailyPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleDailyPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5251DB72BBB238C00B7E45B /* SimpleDailyPlanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDailyPlanner.swift; sourceTree = "<group>"; };
 		B5251DBB2BBB238D00B7E45B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -44,6 +46,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B51A95C42BCB04F1002852D7 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				B51A95C52BCB04FC002852D7 /* Date+Extension.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		B5251DAB2BBB238C00B7E45B = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +73,7 @@
 		B5251DB62BBB238C00B7E45B /* SimpleDailyPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				B51A95C42BCB04F1002852D7 /* Tools */,
 				B5251DCD2BBB251900B7E45B /* Data */,
 				B5251DC62BBB23B600B7E45B /* UI */,
 				B5251DC52BBB23A400B7E45B /* JSON */,
@@ -174,6 +185,7 @@
 				B5251DCF2BBB252300B7E45B /* DayData.swift in Sources */,
 				B5251DCA2BBB23FD00B7E45B /* Page.swift in Sources */,
 				B5251DB82BBB238C00B7E45B /* SimpleDailyPlanner.swift in Sources */,
+				B51A95C62BCB04FC002852D7 /* Date+Extension.swift in Sources */,
 				B51A95C32BCAFE7A002852D7 /* ShapeStyle+Extension.swift in Sources */,
 				B5FA9ECD2BCADA0C000F68CD /* DisplayType.swift in Sources */,
 				B5251DCC2BBB240900B7E45B /* Engine.swift in Sources */,

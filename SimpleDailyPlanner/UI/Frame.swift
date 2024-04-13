@@ -38,6 +38,9 @@ struct Frame: View {
                 
             }.frame(maxHeight: .infinity)
         }
+        .onAppear {
+            menuIndex = Date().weekday
+        }
     }
 
     func page(geometry: GeometryProxy) -> some View {
