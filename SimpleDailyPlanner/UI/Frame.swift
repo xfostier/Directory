@@ -5,6 +5,7 @@
 //  Created by xfostier on 01/04/2024.
 //  
 
+// 🎶 https://youtu.be/Fq1B3c5a9QM?si=A_j-1YegtKrScXOk
 
 import Foundation
 import SwiftUI
@@ -50,7 +51,7 @@ struct Frame: View {
 
     func quickNotes(geometry: GeometryProxy) -> some View {
         VStack(spacing: 0) {
-            Image(systemName: "pencil.circle")
+            Image(systemName: storage.days.first?.name ?? "pencil.circle")
                 .imageScale(.large)
                 .foregroundStyle(menuIndex == 0 ? .yellow : .black)
                 .shadow(color: .yellow, radius: menuIndex == 0 ? 20 : 0)

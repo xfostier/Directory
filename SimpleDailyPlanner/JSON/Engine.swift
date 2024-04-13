@@ -5,13 +5,13 @@
 //  Created by xfostier on 01/04/2024.
 //  
 
+// https://medium.com/@lrkhan/storing-app-data-locally-99e36d4b91a0
 
 import Foundation
 
 public struct Engine {
-    private let path = "menuApp.json"
 
-    // https://medium.com/@lrkhan/storing-app-data-locally-99e36d4b91a0
+    private let path = "menuApp.json"
 
     func writeData(_ totals: [DayData]) -> Void {
         do {
@@ -46,49 +46,57 @@ public struct Engine {
     var initialization: [DayData] {
         [
             .init(
-                order: 0,
-                name: "Notes",
+                order: 0, 
+                displayType: .image,
+                name: "pencil.circle",
                 bgColor: "blue",
                 textColor: "black"
             ),
             .init(
-                order: 1,
+                order: 1, 
+                displayType: .text,
                 name: "Mon",
                 bgColor: "gray",
                 textColor: "black"
             ),
             .init(
                 order: 2,
+                displayType: .text,
                 name: "Tue",
                 bgColor: "gray",
                 textColor: "black"
             ),
             .init(
                 order: 3,
+                displayType: .text,
                 name: "Wed",
                 bgColor: "gray",
                 textColor: "black"
             ),
             .init(
                 order: 4,
+                displayType: .text,
                 name: "Thu",
                 bgColor: "gray",
                 textColor: "black"
             ),
             .init(
                 order: 5,
+                displayType: .text,
                 name: "Fri",
                 bgColor: "gray",
                 textColor: "black"
             ),
             .init(
                 order: 6,
+                displayType: .text,
                 name: "Sat",
                 bgColor: "gray",
                 textColor: "black"
             ),
             .init(
                 order: 7,
+                displayType: .text,
                 name: "Sun",
                 bgColor: "gray",
                 textColor: "black"

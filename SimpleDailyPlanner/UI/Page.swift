@@ -4,8 +4,9 @@
 //
 //  Created by xfostier on 01/04/2024.
 //
+// 🎶 https://youtu.be/rhlZY4D8jlQ?si=19v3chOJsY1wx600
 // https://www.hackingwithswift.com/quick-start/swiftui/how-to-dismiss-the-keyboard-for-a-textfield
-// 🎵 https://www.youtube.com/watch?v=rhlZY4D8jlQ&list=RDrhlZY4D8jlQ&start_radio=1
+
 
 import Foundation
 import SwiftUI
@@ -47,14 +48,30 @@ struct Page: View {
                 geometry: geometry,
                 start: start,
                 size: size))
+            
+            marker.position(processMarkerPosition())
             }
-        
-//        @ViewBuilder
-//        var marker: some View {
-//            if
-//        }
+        }
+    
+    @ViewBuilder
+    private var marker: some View {
+        if data.displayType == .image {
+            Image(systemName: data.name)
+                .imageScale(.large)
+        } else {
+            Text(data.name)
+        }
     }
-    struct PageWithBookmark: View {
+    
+    private func processMarkerPosition() -> CGPoint{
+        .init(
+            x: start.x - (size.width / 2),
+            y: start.y + (size.height / 2)
+        )
+        
+    }
+
+    private struct PageWithBookmark: View {
         private let geometry: GeometryProxy
         private let start: CGPoint
         private let size: CGSize

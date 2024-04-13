@@ -14,7 +14,7 @@
 		B5251DCC2BBB240900B7E45B /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5251DCB2BBB240900B7E45B /* Engine.swift */; };
 		B5251DCF2BBB252300B7E45B /* DayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5251DCE2BBB252300B7E45B /* DayData.swift */; };
 		B5251DD12BBB253A00B7E45B /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5251DD02BBB253A00B7E45B /* Storage.swift */; };
-		B5FA9ECD2BCADA0C000F68CD /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FA9ECC2BCADA0C000F68CD /* Type.swift */; };
+		B5FA9ECD2BCADA0C000F68CD /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FA9ECC2BCADA0C000F68CD /* Display.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +26,7 @@
 		B5251DCB2BBB240900B7E45B /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		B5251DCE2BBB252300B7E45B /* DayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayData.swift; sourceTree = "<group>"; };
 		B5251DD02BBB253A00B7E45B /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
-		B5FA9ECC2BCADA0C000F68CD /* Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
+		B5FA9ECC2BCADA0C000F68CD /* Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +90,7 @@
 			children = (
 				B5251DCE2BBB252300B7E45B /* DayData.swift */,
 				B5251DD02BBB253A00B7E45B /* Storage.swift */,
-				B5FA9ECC2BCADA0C000F68CD /* Type.swift */,
+				B5FA9ECC2BCADA0C000F68CD /* Display.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -168,7 +168,7 @@
 				B5251DCF2BBB252300B7E45B /* DayData.swift in Sources */,
 				B5251DCA2BBB23FD00B7E45B /* Page.swift in Sources */,
 				B5251DB82BBB238C00B7E45B /* SimpleDailyPlanner.swift in Sources */,
-				B5FA9ECD2BCADA0C000F68CD /* Type.swift in Sources */,
+				B5FA9ECD2BCADA0C000F68CD /* Display.swift in Sources */,
 				B5251DCC2BBB240900B7E45B /* Engine.swift in Sources */,
 				B5251DD12BBB253A00B7E45B /* Storage.swift in Sources */,
 			);
