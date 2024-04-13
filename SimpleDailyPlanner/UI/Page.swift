@@ -36,6 +36,10 @@ struct Page: View {
                     .border(.green, width: 0.5)
                     .padding(5)
                     .focused($menuIsFocused)
+                    .onTapGesture {
+                        commentIsFocused = false
+                        menuIsFocused = true
+                    }
                 
                 TextField("", text: $data.comment, axis: .vertical)
                     .frame(maxHeight: geometry.size.height * 0.3, alignment: .top)
@@ -43,6 +47,10 @@ struct Page: View {
                     .border(.green, width: 0.5)
                     .padding(5)
                     .focused($commentIsFocused)
+                    .onTapGesture {
+                        menuIsFocused = false
+                        commentIsFocused = true
+                    }
             }
             .background(PageWithBookmark(
                 geometry: geometry,

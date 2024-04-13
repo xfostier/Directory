@@ -1,5 +1,5 @@
 //
-//  Kind.swift
+//  DisplayType.swift
 //  SimpleDailyPlanner
 //
 //  Created by xfostier on 13/04/2024.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Display: String, Codable {
+enum DisplayType: String, Codable {
     case image = "image"
     case text = "text"
 }

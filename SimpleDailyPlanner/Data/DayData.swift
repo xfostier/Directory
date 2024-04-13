@@ -12,7 +12,7 @@ import UIKit
 
 class DayData: ObservableObject, Codable {
     let order: Int
-    let displayType: Display
+    let displayType: DisplayType
     let name: String
     let bgColor: String
     let textColor: String
@@ -29,7 +29,7 @@ class DayData: ObservableObject, Codable {
         case comment
     }
 
-    init(order: Int, displayType: Display, name: String, bgColor: String, textColor: String, icon: String = "", menu: String = "", comment: String = "") {
+    init(order: Int, displayType: DisplayType, name: String, bgColor: String, textColor: String, icon: String = "", menu: String = "", comment: String = "") {
         self.order = order
         self.displayType = displayType
         self.name = name
