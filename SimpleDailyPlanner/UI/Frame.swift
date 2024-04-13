@@ -28,6 +28,7 @@ struct Frame: View {
                 buttonStack(geometry: geometry)
             }
             .frame(alignment: .leading)
+            .ignoresSafeArea(.keyboard)
 
             page(geometry: geometry)
                 .id(menuIndex)
@@ -36,7 +37,7 @@ struct Frame: View {
                 .shadow(color: .black, radius: 10)
                 
             }.frame(maxHeight: .infinity)
-        }.ignoresSafeArea(.keyboard)
+        }
     }
 
     func page(geometry: GeometryProxy) -> some View {

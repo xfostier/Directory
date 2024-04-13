@@ -10,7 +10,6 @@
 import SwiftUI
 
 struct Page: View {
-
     private let geometry: GeometryProxy
     @StateObject var data: DayData
     private let start: CGPoint
@@ -35,6 +34,9 @@ struct Page: View {
                     .padding(5)
                     .focused($menuIsFocused)
                     .onTapGesture {
+                        if menuIsFocused {
+                            UIInputViewController().dismissKeyboard()
+                        }
                         commentIsFocused = false
                         menuIsFocused = true
                     }
@@ -46,6 +48,9 @@ struct Page: View {
                     .padding(5)
                     .focused($commentIsFocused)
                     .onTapGesture {
+                        if commentIsFocused {
+                            UIInputViewController().dismissKeyboard()
+                        }
                         menuIsFocused = false
                         commentIsFocused = true
                     }
