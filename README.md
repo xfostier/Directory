@@ -1,2 +1,2 @@
-# Notebook
-Day to day notebook
+# SimpleDailyPlanner
+Day to day diary
