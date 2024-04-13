@@ -6,6 +6,7 @@
 //
 // 🎶 https://youtu.be/rhlZY4D8jlQ?si=19v3chOJsY1wx600
 // https://www.hackingwithswift.com/quick-start/swiftui/how-to-dismiss-the-keyboard-for-a-textfield
+// https://stackoverflow.com/questions/71744888/swiftui-view-with-rounded-corners-and-border
 
 import SwiftUI
 
@@ -30,7 +31,10 @@ struct Page: View {
                 TextField("", text: $data.menu, axis: .vertical)
                     .frame(maxHeight: geometry.size.height * 0.7, alignment: .top)
                     .lineLimit(nil)
-                    .border(.green, width: 0.5)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.white, style: .init(lineWidth: 0.5))
+                    )
                     .padding(5)
                     .focused($menuIsFocused)
                     .onTapGesture {
@@ -44,7 +48,10 @@ struct Page: View {
                 TextField("", text: $data.comment, axis: .vertical)
                     .frame(maxHeight: geometry.size.height * 0.3, alignment: .top)
                     .lineLimit(nil)
-                    .border(.green, width: 0.5)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.white, style: .init(lineWidth: 0.5))
+                    )
                     .padding(5)
                     .focused($commentIsFocused)
                     .onTapGesture {
