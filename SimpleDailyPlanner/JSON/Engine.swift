@@ -11,36 +11,65 @@ import Foundation
 
 public struct Engine {
 
-    private let path = "menuApp.json"
-
-    func writeData(_ totals: [DayData]) -> Void {
+    private func path(index: Int) -> String { "SimpleDailyPlanner\(index).json"
+    }
+    
+    private let order = [0, 1, 2, 3, 4, 5, 6, 7]
+    
+    func save(day: DayData?) {
+        guard let day else {
+            return
+        }
+        self.writeData(day)
+    }
+    
+    func writeData(_ data: DayData) -> Void {
         do {
             let fileURL = try FileManager.default
                 .url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-                .appendingPathComponent(path)
-
+                .appendingPathComponent(path(index: data.order))
+            
             try JSONEncoder()
-                .encode(totals)
+                .encode(data)
                 .write(to: fileURL)
         } catch {
             print("error writing data")
         }
     }
 
-    func readData() -> [DayData] {
-        do {
-            let fileURL = try FileManager.default
-                .url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-                .appendingPathComponent("menuApp.json")
-
-            let data = try Data(contentsOf: fileURL)
-            let pastData = try JSONDecoder().decode([DayData].self, from: data)
-
-            return pastData
-        } catch {
-            print("error reading data")
-            return initialization
+    func writeData(_ totals: [DayData]) -> Void {
+        for data in totals {
+            do {
+                let fileURL = try FileManager.default
+                    .url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+                    .appendingPathComponent(path(index: data.order))
+                
+                try JSONEncoder()
+                    .encode(totals)
+                    .write(to: fileURL)
+            } catch {
+                print("error writing data")
+            }
         }
+    }
+
+    func readData() -> [DayData] {
+        var array = [DayData]()
+        for index in order {
+            do {
+                let fileURL = try FileManager.default
+                    .url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                    .appendingPathComponent(path(index: index))
+                
+                let data = try Data(contentsOf: fileURL)
+                let parsedData = try JSONDecoder().decode(DayData.self, from: data)
+                array.append(parsedData)
+            } catch {
+                print("error reading data")
+                return initialization
+            }
+        }
+        return array
     }
 
     var initialization: [DayData] {
@@ -50,56 +79,56 @@ public struct Engine {
                 displayType: .image,
                 name: "pencil.circle",
                 bgColor: "blue",
-                textColor: "black"
+                fgColor: "black"
             ),
             .init(
                 order: 1, 
                 displayType: .text,
                 name: "Mon",
                 bgColor: "gray",
-                textColor: "black"
+                fgColor: "black"
             ),
             .init(
                 order: 2,
                 displayType: .text,
                 name: "Tue",
                 bgColor: "gray",
-                textColor: "black"
+                fgColor: "black"
             ),
             .init(
                 order: 3,
                 displayType: .text,
                 name: "Wed",
                 bgColor: "gray",
-                textColor: "black"
+                fgColor: "black"
             ),
             .init(
                 order: 4,
                 displayType: .text,
                 name: "Thu",
                 bgColor: "gray",
-                textColor: "black"
+                fgColor: "black"
             ),
             .init(
                 order: 5,
                 displayType: .text,
                 name: "Fri",
                 bgColor: "gray",
-                textColor: "black"
+                fgColor: "black"
             ),
             .init(
                 order: 6,
                 displayType: .text,
                 name: "Sat",
                 bgColor: "gray",
-                textColor: "black"
+                fgColor: "black"
             ),
             .init(
                 order: 7,
                 displayType: .text,
                 name: "Sun",
                 bgColor: "gray",
-                textColor: "black"
+                fgColor: "black"
             )
         ]
     }
