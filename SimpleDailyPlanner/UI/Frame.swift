@@ -2,12 +2,10 @@
 //  Frame.swift
 //  SimpleDailyPlanner
 //
-//  Created by xfostier on 01/04/2024.
+//  Created by Xavier Fostier on 01/04/2024.
 //  
-
 // 🎶 https://youtu.be/Fq1B3c5a9QM?si=A_j-1YegtKrScXOk
 
-import Foundation
 import SwiftUI
 
 struct Frame: View {
@@ -15,6 +13,7 @@ struct Frame: View {
     @State var menuIndex = 0
     private let cellsWidth: CGFloat = 70
     private let cellsSpacing: CGFloat = 1
+    private static let mainColor = Color.darkGray
 
     init(storage: Storage) {
         self._storage = StateObject(wrappedValue: storage)
@@ -53,12 +52,10 @@ struct Frame: View {
         VStack(spacing: 0) {
             Image(systemName: storage.days.first?.name ?? "pencil.circle")
                 .imageScale(.large)
-                .foregroundStyle(menuIndex == 0 ? .yellow : .black)
-                .shadow(color: .yellow, radius: menuIndex == 0 ? 20 : 0)
         }
         .frame(width: cellsWidth, height: (geometry.size.height / CGFloat(storage.days.count)) - cellsSpacing)
         .background(
-            .gray,
+            Frame.mainColor,
             in: RoundedRectangle(cornerRadius: 16)
         )
         .onTapGesture {
@@ -75,12 +72,10 @@ struct Frame: View {
                 VStack {
                     Text(day.name)
                         .bold()
-                        .foregroundStyle(menuIndex == day.order ? .yellow : .black)
-                        .shadow(color: .yellow, radius: menuIndex == day.order ? 20 : 0)
                 }
                 .frame(width: cellsWidth, height: (geometry.size.height / CGFloat(storage.days.count)) - cellsSpacing)
                 .background(
-                    .gray,
+                    Frame.mainColor,
                     in: RoundedRectangle(cornerRadius: 16)
                 )
                 .onTapGesture {

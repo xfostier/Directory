@@ -2,7 +2,7 @@
 //  Engine.swift
 //  SimpleDailyPlanner
 //
-//  Created by xfostier on 01/04/2024.
+//  Created by Xavier Fostier on 01/04/2024.
 //  
 
 // https://medium.com/@lrkhan/storing-app-data-locally-99e36d4b91a0

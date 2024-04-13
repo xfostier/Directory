@@ -2,13 +2,11 @@
 //  Page.swift
 //  SimpleDailyPlanner
 //
-//  Created by xfostier on 01/04/2024.
+//  Created by Xavier Fostier on 01/04/2024.
 //
 // 🎶 https://youtu.be/rhlZY4D8jlQ?si=19v3chOJsY1wx600
 // https://www.hackingwithswift.com/quick-start/swiftui/how-to-dismiss-the-keyboard-for-a-textfield
 
-
-import Foundation
 import SwiftUI
 
 struct Page: View {
@@ -57,7 +55,12 @@ struct Page: View {
                 start: start,
                 size: size))
             
-            marker.position(processMarkerPosition())
+            marker
+                .position(processMarkerPosition())
+                .bold()
+                .foregroundStyle(.yellow)
+                .shadow(color: .yellow, radius: 10)
+                .shadow(color: .yellow, radius: 10)
             }
         }
     
@@ -223,7 +226,7 @@ struct Page: View {
                     )
                 )
 
-            }.fill(.gray)
+            }.fill(.darkGray)
         }
     }
 }

@@ -2,11 +2,9 @@
 //  DayData.swift
 //  SimpleDailyPlanner
 //
-//  Created by xfostier on 01/04/2024.
+//  Created by Xavier Fostier on 01/04/2024.
 //  
 
-
-import Foundation
 import SwiftUI
 import UIKit
 
