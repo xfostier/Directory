@@ -1,5 +1,5 @@
 //
-//  DateExtractor.swift
+//  Date+Extension.swift
 //  SimpleDailyPlanner
 //
 //  Created by Xavier Fostier on 13/04/2024.
