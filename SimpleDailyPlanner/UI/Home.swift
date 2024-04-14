@@ -5,10 +5,11 @@
 //  Created by Xavier Fostier on 01/04/2024.
 //  
 // 🎶 https://youtu.be/Fq1B3c5a9QM?si=A_j-1YegtKrScXOk
+// https://stackoverflow.com/questions/56518868/how-to-apply-shadow-to-interior-views-in-swiftui
 
 import SwiftUI
 
-struct Frame: View {
+struct Home: View {
     @StateObject var storage: Storage
     @State var menuIndex = 0
     private let cellsWidth: CGFloat = 70
@@ -34,8 +35,7 @@ struct Frame: View {
                 .id(menuIndex)
                 .offset(x: cellsWidth - 5)
                 .frame(maxWidth: geometry.size.width - cellsWidth - 5)
-                .shadow(color: .black, radius: 10)
-                
+
             }.frame(maxHeight: .infinity)
         }
         .onAppear {
@@ -59,7 +59,7 @@ struct Frame: View {
         }
         .frame(width: cellsWidth, height: (geometry.size.height / CGFloat(storage.days.count)) - cellsSpacing)
         .background(
-            Frame.mainColor,
+            Home.mainColor,
             in: RoundedRectangle(cornerRadius: 16)
         )
         .onTapGesture {
@@ -79,7 +79,7 @@ struct Frame: View {
                 }
                 .frame(width: cellsWidth, height: (geometry.size.height / CGFloat(storage.days.count)) - cellsSpacing)
                 .background(
-                    Frame.mainColor,
+                    Home.mainColor,
                     in: RoundedRectangle(cornerRadius: 16)
                 )
                 .onTapGesture {

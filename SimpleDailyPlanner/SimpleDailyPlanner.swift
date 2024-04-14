@@ -12,7 +12,7 @@ import SwiftUI
 struct SimpleDailyPlannerApp: App {
     var body: some Scene {
         WindowGroup {
-            Frame(storage: Storage())
+            Home(storage: Storage())
         }
     }
 }

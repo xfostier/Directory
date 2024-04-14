@@ -15,6 +15,8 @@ struct Page: View {
     @StateObject var data: DayData
     private let start: CGPoint
     private let size: CGSize
+    private let textFieldInternalPadding: CGFloat = 5
+    private let textFieldExternalPadding: CGFloat = 7
     @FocusState private var menuIsFocused: Bool
     @FocusState private var commentIsFocused: Bool
 
@@ -29,13 +31,15 @@ struct Page: View {
         ZStack {
             VStack (spacing: 2) {
                 TextField("", text: $data.menu, axis: .vertical)
-                    .frame(maxHeight: geometry.size.height * 0.7, alignment: .top)
+                    .padding(textFieldInternalPadding)
+                    .bold()
                     .lineLimit(nil)
+                    .frame(maxHeight: geometry.size.height * 0.7, alignment: .top)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(.white, style: .init(lineWidth: 0.5))
                     )
-                    .padding(5)
+                    .padding(textFieldExternalPadding)
                     .focused($menuIsFocused)
                     .onTapGesture {
                         if menuIsFocused {
@@ -46,13 +50,15 @@ struct Page: View {
                     }
                 
                 TextField("", text: $data.comment, axis: .vertical)
-                    .frame(maxHeight: geometry.size.height * 0.3, alignment: .top)
+                    .padding(textFieldInternalPadding)
+                    .bold()
                     .lineLimit(nil)
+                    .frame(maxHeight: geometry.size.height * 0.3, alignment: .top)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(.white, style: .init(lineWidth: 0.5))
                     )
-                    .padding(5)
+                    .padding(textFieldExternalPadding)
                     .focused($commentIsFocused)
                     .onTapGesture {
                         if commentIsFocused {
@@ -238,7 +244,9 @@ struct Page: View {
                     )
                 )
 
-            }.fill(.darkGray)
+            }
+            .fill(.darkGray)
+            .shadow(color: .black, radius: 10)
         }
     }
 }
