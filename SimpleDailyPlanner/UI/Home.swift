@@ -10,14 +10,21 @@
 import SwiftUI
 
 struct Home: View {
-    @StateObject var storage: Storage
-    @State var menuIndex = 0
+    @State var menuIndex = 0 {
+        didSet {
+            pageViewModel.dayData = storage.days[menuIndex]
+        }
+    }
+    @State var displaySettings: Bool = false
+    let storage: Storage
     private let cellsWidth: CGFloat = 70
     private let cellsSpacing: CGFloat = 1
     private static let mainColor = Color.darkGray
+    private var pageViewModel: PageViewModel
 
-    init(storage: Storage) {
-        self._storage = StateObject(wrappedValue: storage)
+    init() {
+        self.storage = Storage()
+        self.pageViewModel = PageViewModel(dayData: storage.days[Date().weekday])
     }
 
     var body: some View {
@@ -40,13 +47,19 @@ struct Home: View {
         }
         .onAppear {
             menuIndex = Date().weekday
-        }
+        }.sheet(
+            isPresented: $displaySettings,
+            onDismiss: {
+                StorageEngine.save(day: storage.days[menuIndex])
+        }, content: {
+            Settings(data: storage.days[menuIndex])
+        })
     }
-
+    
     func page(geometry: GeometryProxy) -> some View {
         Page(
             geometry: geometry,
-            data: storage.days[menuIndex],
+            pageViewModel: pageViewModel,
             start: .init(x: 0, y: CGFloat(menuIndex) * (geometry.size.height / CGFloat(storage.days.count) - cellsSpacing) + cellsSpacing * (CGFloat(menuIndex))),
             size: .init(width: cellsWidth - 5, height: (geometry.size.height / CGFloat(storage.days.count)) - cellsSpacing)
         )
@@ -59,14 +72,15 @@ struct Home: View {
         }
         .frame(width: cellsWidth, height: (geometry.size.height / CGFloat(storage.days.count)) - cellsSpacing)
         .background(
-            Home.mainColor,
+            storage.days[0].bgColor.color!,
             in: RoundedRectangle(cornerRadius: 16)
         )
         .onTapGesture {
             menuIndex = 0
         }
         .onLongPressGesture {
-            // TODO: Open settings for quick notes
+            menuIndex = 0
+            displaySettings.toggle()
         }
     }
 
@@ -76,17 +90,19 @@ struct Home: View {
                 VStack {
                     Text(day.name)
                         .bold()
+                        .foregroundStyle(day.fgColor.color!)
                 }
                 .frame(width: cellsWidth, height: (geometry.size.height / CGFloat(storage.days.count)) - cellsSpacing)
                 .background(
-                    Home.mainColor,
+                    day.bgColor.color!,
                     in: RoundedRectangle(cornerRadius: 16)
                 )
                 .onTapGesture {
                     menuIndex = day.order
                 }
                 .onLongPressGesture {
-                    // TODO: Open settings for selected day
+                    menuIndex = day.order
+                    displaySettings.toggle()
                 }
             }
         }

@@ -9,21 +9,22 @@
 
 import Foundation
 
-public struct Engine {
+public struct StorageEngine {
 
-    private func path(index: Int) -> String { "SimpleDailyPlanner\(index).json"
+    static private func path(index: Int) -> String { 
+        "SimpleDailyPlanner\(index).json"
     }
     
     private let order = [0, 1, 2, 3, 4, 5, 6, 7]
     
-    func save(day: DayData?) {
+    static func save(day: DayData?) {
         guard let day else {
             return
         }
         self.writeData(day)
     }
     
-    func writeData(_ data: DayData) -> Void {
+    static func writeData(_ data: DayData) -> Void {
         do {
             let fileURL = try FileManager.default
                 .url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
@@ -42,7 +43,7 @@ public struct Engine {
             do {
                 let fileURL = try FileManager.default
                     .url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-                    .appendingPathComponent(path(index: data.order))
+                    .appendingPathComponent(StorageEngine.path(index: data.order))
                 
                 try JSONEncoder()
                     .encode(totals)
@@ -59,77 +60,77 @@ public struct Engine {
             do {
                 let fileURL = try FileManager.default
                     .url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-                    .appendingPathComponent(path(index: index))
+                    .appendingPathComponent(StorageEngine.path(index: index))
                 
                 let data = try Data(contentsOf: fileURL)
                 let parsedData = try JSONDecoder().decode(DayData.self, from: data)
                 array.append(parsedData)
             } catch {
                 print("error reading data")
-                return initialization
+                array.append(initialization(index: index))
             }
         }
         return array
     }
 
-    var initialization: [DayData] {
+    func initialization(index: Int) -> DayData {
         [
             .init(
                 order: 0, 
                 displayType: .image,
                 name: "pencil.circle",
-                bgColor: "blue",
-                fgColor: "black"
+                bgColor: "70-70-70",
+                fgColor: "255-255-255"
             ),
             .init(
                 order: 1, 
                 displayType: .text,
                 name: "Mon",
-                bgColor: "gray",
-                fgColor: "black"
+                bgColor: "70-70-70",
+                fgColor: "255-255-255"
             ),
             .init(
                 order: 2,
                 displayType: .text,
                 name: "Tue",
-                bgColor: "gray",
-                fgColor: "black"
+                bgColor: "70-70-70",
+                fgColor: "255-255-255"
             ),
             .init(
                 order: 3,
                 displayType: .text,
                 name: "Wed",
-                bgColor: "gray",
-                fgColor: "black"
+                bgColor: "70-70-70",
+                fgColor: "255-255-255"
             ),
             .init(
                 order: 4,
                 displayType: .text,
                 name: "Thu",
-                bgColor: "gray",
-                fgColor: "black"
+                bgColor: "70-70-70",
+                fgColor: "255-255-255"
             ),
             .init(
                 order: 5,
                 displayType: .text,
                 name: "Fri",
-                bgColor: "gray",
-                fgColor: "black"
+                bgColor: "70-70-70",
+                fgColor: "255-255-255"
             ),
             .init(
                 order: 6,
                 displayType: .text,
                 name: "Sat",
-                bgColor: "gray",
-                fgColor: "black"
+                bgColor: "70-70-70",
+                fgColor: "255-255-255"
             ),
             .init(
                 order: 7,
                 displayType: .text,
                 name: "Sun",
-                bgColor: "gray",
-                fgColor: "black"
+                bgColor: "70-70-70",
+                fgColor: "255-255-255"
             )
-        ]
+        ][index]
     }
 }

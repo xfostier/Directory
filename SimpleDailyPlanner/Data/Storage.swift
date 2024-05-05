@@ -7,8 +7,9 @@
 
 import Foundation
 
-class Storage: ObservableObject {
-    private let engine = Engine()
+//TODO: Move debounce to Storage
+class Storage {
+    private let engine = StorageEngine()
     let days: [DayData]
 
     init() {

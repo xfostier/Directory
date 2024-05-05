@@ -12,7 +12,7 @@ import SwiftUI
 
 struct Page: View {
     private let geometry: GeometryProxy
-    @StateObject var data: DayData
+    @ObservedObject var pageViewModel: PageViewModel
     private let start: CGPoint
     private let size: CGSize
     private let textFieldInternalPadding: CGFloat = 5
@@ -20,9 +20,9 @@ struct Page: View {
     @FocusState private var menuIsFocused: Bool
     @FocusState private var commentIsFocused: Bool
 
-    init(geometry: GeometryProxy, data: DayData, start: CGPoint, size: CGSize) {
+    init(geometry: GeometryProxy, pageViewModel: PageViewModel, start: CGPoint, size: CGSize) {
         self.geometry = geometry
-        self._data = StateObject(wrappedValue: data)
+        self.pageViewModel = pageViewModel
         self.start = start
         self.size = size
     }
@@ -30,7 +30,7 @@ struct Page: View {
     var body: some View {
         ZStack {
             VStack (spacing: 2) {
-                TextField("", text: $data.menu, axis: .vertical)
+                TextField("", text: $pageViewModel.menu, axis: .vertical)
                     .padding(textFieldInternalPadding)
                     .bold()
                     .lineLimit(nil)
@@ -49,7 +49,7 @@ struct Page: View {
                         menuIsFocused = true
                     }
                 
-                TextField("", text: $data.comment, axis: .vertical)
+                TextField("", text: $pageViewModel.comment, axis: .vertical)
                     .padding(textFieldInternalPadding)
                     .bold()
                     .lineLimit(nil)
@@ -71,26 +71,19 @@ struct Page: View {
             .background(PageWithBookmark(
                 geometry: geometry,
                 start: start,
-                size: size))
+                size: size,
+                fillColor: pageViewModel.background
+                )
+            )
             
-            marker
+            pageViewModel.marker
                 .position(processMarkerPosition())
                 .bold()
-                .foregroundStyle(.yellow)
-                .shadow(color: .yellow, radius: 10)
-                .shadow(color: .yellow, radius: 10)
+                .foregroundStyle(pageViewModel.foreground)
+                .shadow(color: pageViewModel.foreground, radius: 10)
+                .shadow(color: pageViewModel.foreground, radius: 10)
             }
         }
-    
-    @ViewBuilder
-    private var marker: some View {
-        if data.displayType == .image {
-            Image(systemName: data.name)
-                .imageScale(.large)
-        } else {
-            Text(data.name)
-        }
-    }
     
     private func processMarkerPosition() -> CGPoint{
         .init(
@@ -104,12 +97,14 @@ struct Page: View {
         private let geometry: GeometryProxy
         private let start: CGPoint
         private let size: CGSize
+        private let fillColor: Color
         private let bottomCorrection: CGFloat = 1
 
-        init(geometry: GeometryProxy, start: CGPoint, size: CGSize) {
+        init(geometry: GeometryProxy, start: CGPoint, size: CGSize, fillColor: Color) {
             self.geometry = geometry
             self.start = start
             self.size = size
+            self.fillColor = fillColor
         }
 
         var body: some View {
@@ -245,7 +240,7 @@ struct Page: View {
                 )
 
             }
-            .fill(.darkGray)
+            .fill(fillColor)
             .shadow(color: .black, radius: 10)
         }
     }

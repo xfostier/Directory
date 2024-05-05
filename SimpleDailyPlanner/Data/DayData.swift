@@ -11,13 +11,13 @@ import UIKit
 
 class DayData: ObservableObject, Codable {
     let order: Int
-    let displayType: DisplayType
-    let name: String
-    let bgColor: String
-    let fgColor: String
-    @Published var menu: String
-    @Published var comment: String
-    private var cancellables = Set<AnyCancellable>()
+    var displayType: DisplayType
+    var name: String
+    var bgColor: String
+    var fgColor: String
+    var menu: String
+    var comment: String
+
 
     enum CodingKeys: String, CodingKey {
         case order
@@ -59,14 +59,5 @@ class DayData: ObservableObject, Codable {
         self.fgColor = fgColor
         self.menu = menu
         self.comment = comment
-        
-        $menu.debounce(
-            for: 0.6,
-            scheduler: DispatchQueue.main
-        ).sink(receiveValue: { [weak self] value in
-            self?.menu = value
-            Engine().save(day: self)
-            }
-            ).store(in: &cancellables)
     }
 }
